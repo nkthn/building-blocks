@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "rooms": {
+      "$code": {
+        ".read": "$code.matches(/^[a-z0-9]{1,8}$/)",
+        "players": {
+          "$pid": {
+            ".write": "$code.matches(/^[a-z0-9]{1,8}$/) && $pid.matches(/^[a-z0-9]{1,12}$/)",
+            ".validate": "newData.hasChild('name')",
+            "name": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 20" },
+            "score": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 200000" },
+            "round": {
+              "id": { ".validate": "newData.isString() && newData.val().length <= 12" },
+              "start": { ".validate": "newData.isNumber()" },
+              "seed": { ".validate": "newData.isNumber()" },
+              "$other": { ".validate": false }
+            },
+            "blocks": { "$i": { ".validate": "newData.isNumber() && newData.val() >= 500 && newData.val() <= 1000" } },
+            "$other": { ".validate": false }
+          }
+        }
+      }
+    }
+  }
+}

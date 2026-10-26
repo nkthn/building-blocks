@@ -1,0 +1,4 @@
+{
+  "hosting": { "site": "building-blocks-songs", "public": "public", "ignore": ["**/.*"] },
+  "database": { "rules": "database.rules.json" }
+}
